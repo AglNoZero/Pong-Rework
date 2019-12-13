@@ -3,9 +3,14 @@
 #include <SFML/Graphics.hpp>
 #include "Header.h"
 using namespace sf;
-#define OBJECTS 3 //so doi tuong lua chon trong menu
+
+#define WIDTH 900
+#define HEIGHT 600
+
+#define OBJECTS 4 //so doi tuong lua chon trong menu
 #define CharTitleSize 70 //kich co chu tieu de - moi
 #define CharButtonSize 40 //Kich co chu cua nut - moi
+
 class cBeginMenu
 {
 private:

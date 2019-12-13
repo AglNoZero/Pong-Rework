@@ -22,6 +22,10 @@ public:
 
 	void moveDown(int Bot); //di chuyen paddle xuong duoi, input: Bot(canh duoi cua man hinh), output: vi tri cua paddle da duoc doi xuong duoi
 
+	void moveLeft(int WIDTH);
+
+	void moveRight(int WIDTH);
+
 	void update(); //cap nhat vi tri paddle, output: vi tri cua paddle da duoc cap nhat
 
 	void autoMove(int Top, int Bot, cBall ball); //cho paddle tu di chuyen

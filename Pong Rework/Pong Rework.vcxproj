@@ -20,25 +20,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
-    <ClInclude Include="cBall.h" />
     <ClInclude Include="cBeginMenu.h" />
-    <ClInclude Include="cItem.h" />
-    <ClInclude Include="Control.h" />
-    <ClInclude Include="cPaddle.h" />
+    <ClInclude Include="cGameData.h" />
     <ClInclude Include="cPlayerName.h" />
-    <ClInclude Include="cPlayWindow.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="TextBox.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="cBall.cpp" />
     <ClCompile Include="cBeginMenu.cpp" />
-    <ClCompile Include="cItem.cpp" />
-    <ClCompile Include="Control.cpp" />
-    <ClCompile Include="cPaddle.cpp" />
+    <ClCompile Include="cGameData.cpp" />
     <ClCompile Include="cPlayerName.cpp" />
-    <ClCompile Include="cPlayWindow.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="TextBox.cpp" />
   </ItemGroup>

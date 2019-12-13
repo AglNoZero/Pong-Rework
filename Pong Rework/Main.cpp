@@ -1,4 +1,4 @@
-#include <sstream>
+﻿#include <sstream>
 #include <cstdlib>
 #include <iostream>
 using namespace std;
@@ -6,61 +6,84 @@ using namespace std;
 using namespace sf;
 #include "Header.h"
 
+#define WIDTH 900
+#define HEIGHT 600
+
 // This is where our game starts from
 int main()
 {
-	
-	Control play;
-	play.processGame();
-	return 0;
-	
 
-	/*
-	int width = 800, height = 600;
-	renderwindow window(videomode(width, height), "ping pong game");
-	cplaywindow playgame;
-	string nameplayer = "meow";
-	string nameplayer1 = "meow", nameplayer2 = "meo meo";
-	vector <string> winer;
-	playgame.playgameoneplayer(winer, nameplayer, window);
-	playgame.playgametwoplayer(winer, nameplayer1, nameplayer2, window);
-	*/
+	//Thêm background
+	Texture background;
+	background.loadFromFile("2635205 - resize 900x600.jpg");
+	Sprite Background(background);
 
-	/*
-	cItem anItem(0,0,1);
-	Texture* textureArr = new Texture[11];
-	textureArr[0].loadFromFile("Items/dollar.png");
-	textureArr[1].loadFromFile("Items/yellow diamond.png");
-	textureArr[2].loadFromFile("Items/red diamond.png");
-	textureArr[3].loadFromFile("Items/diamond.png");
-	textureArr[4].loadFromFile("Items/fish bone.png");
-	textureArr[5].loadFromFile("Items/bomb.png");
-	textureArr[6].loadFromFile("Items/expand.png");
-	textureArr[7].loadFromFile("Items/minimize.png");
-	textureArr[8].loadFromFile("Items/speed up.png");
-	textureArr[9].loadFromFile("Items/speed down.png");
-	textureArr[10].loadFromFile("Items/frezee.png");
-	anItem.loadTextureFromTextureArray(textureArr);
+	//Kết thúc code mới
 
-	RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+	//Code cũ
+	RenderWindow window(VideoMode(WIDTH, HEIGHT), "Ping Pong Game"); //dau tien chuong trinh hien thi menu mo dau game
 
-	while (window.isOpen())
+	cBeginMenu begin;
+
+	Text a;
+
+	Event event;
+
+	if (window.isOpen())
 	{
-		// Process events
-		sf::Event event;
-		while (window.pollEvent(event))
+		while (window.isOpen())
 		{
-			// Close window: exit
-			if (event.type == sf::Event::Closed)
-				window.close();
+			while (window.pollEvent(event))
+			{
+				if (event.type == Event::Closed) //neu co ai do nhan dau tat tren man hinh thi chuong trinh ket thuc
+				{
+					window.close();
+				}
+				//di chuyen giua cac lua chon trong menu mo dau game
+				else if (event.type == Event::KeyReleased)
+				{
+					if (event.key.code == Keyboard::Up)
+					{
+						begin.moveUp();
+					}
+					else if (event.key.code == Keyboard::Down)
+					{
+						begin.moveDown();
+					}
+					//khi nguoi choi da chon 1 trong cac lua chon cua menu
+					else if (event.key.code == Keyboard::Return)
+					{
+						switch (begin.getChoose()) {
+							//New game
+							case 0:{
+
+							}
+							//Load game
+							case 1: {
+
+							}
+							//Hall of fame
+							case 2: {
+
+
+							}
+							//Exit
+							case 3: {
+
+							}
+						}
+					}
+				}
+				//neu co ai do nhan escape thi thoat chuong trinh
+				if (Keyboard::isKeyPressed(Keyboard::Escape))
+				{
+					window.close();
+				}
+				window.clear();
+				window.draw(Background);//tested - ok
+				begin.draw(window);
+				window.display();
+			}
 		}
-		// Clear screen
-		window.clear();
-		// Draw the sprite
-		window.draw(anItem.getShape());
-	
-		// Update the window
-		window.display();
 	}
-	*/
 }

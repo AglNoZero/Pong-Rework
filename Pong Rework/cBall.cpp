@@ -66,7 +66,7 @@ void cBall::hitPaddle1()
 
 
 //truong hop paddle khong hung duoc ball
-void cBall::hitTopOrBottom()
+void cBall::reset()
 {
 	//quay lai vi tri bat dau
 	position.x = 550;
@@ -101,12 +101,12 @@ int cBall::move(int WIDTH, int HEIGHT, cPaddle paddle1, cPaddle paddle2)
 	//Truong hop khong hung duoc ball
 	if (getPosition().left < 0) //at top
 	{
-		hitTopOrBottom();
+		reset();
 		return 2;
 	}
 	if (getPosition().left > WIDTH)
 	{
-		hitTopOrBottom();
+		reset();
 		return 1;
 	}
 

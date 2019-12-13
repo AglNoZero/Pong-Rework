@@ -34,7 +34,7 @@ public:
 
 	void hitPaddle2();//xet truong hop ball cham paddle2, output: ball da duoc chuyen huong, cong 1 diem cho player1
 	
-	void hitTopOrBottom();//xet truong hop paddle khonng hung duoc ball, output: ball quay lai vi tri bat dau
+	void reset();//xet truong hop paddle khonng hung duoc ball, output: ball quay lai vi tri bat dau
 
 	void updatePosition(); //cap nhat lai vi tri cua ball, output: vi tri toa do cua ball da duoc cap nhat
 

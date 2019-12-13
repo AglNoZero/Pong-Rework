@@ -4,7 +4,7 @@ cPaddle::cPaddle(float startX, float startY)
 {
 	position.x = startX;
 	position.y = startY;
-	cPaddleShape.setSize(sf::Vector2f(10, 150));
+	cPaddleShape.setSize(sf::Vector2f(150, 10));
 	cPaddleShape.setPosition(position);
 	cPaddleShape.setFillColor(Color(6, 232, 203));
 }
@@ -37,6 +37,22 @@ void cPaddle::moveDown(int Bot)
 	}
 }
 
+void cPaddle::moveLeft(int WIDTH)
+{
+	if (position.x <= WIDTH)
+	{
+		position.x -= cPaddleSpeed;
+	}
+}
+
+void cPaddle::moveRight(int WIDTH)
+{
+	if (position.x <= WIDTH)
+	{
+		position.x += cPaddleSpeed;
+	}
+}
+
 
 void cPaddle::update()
 {
@@ -60,14 +76,14 @@ void cPaddle::autoMove(int Top, int Bot, cBall ball)
 void cPaddle::expand()
 {
 	Vector2f temp = cPaddleShape.getSize();
-	temp.y = temp.y *1.1;
+	temp.x = temp.x *1.1;
 	cPaddleShape.setSize(temp);
 }
 
 void cPaddle::minimize()
 {
 	Vector2f temp = cPaddleShape.getSize();
-	temp.y = temp.y*0.9;
+	temp.x = temp.x*0.9;
 	cPaddleShape.setSize(temp);
 }
 
@@ -92,7 +108,7 @@ void cPaddle::freeze()
 
 void cPaddle::reset()
 {
-	cPaddleShape.setSize(sf::Vector2f(10, 150));
+	cPaddleShape.setSize(sf::Vector2f(150, 10));
 	cPaddleShape.setPosition(position);
 	cPaddleShape.setFillColor(Color(6, 232, 203));
 	cPaddleSpeed = 0.4f;

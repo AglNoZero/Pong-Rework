@@ -1,8 +1,5 @@
 #include "cPlayerName.h"
 
-int WIDTH = 800;
-int HEIGHT = 600;
-
 void cPlayerName::setTheTextBoxTwoPlayer()
 {
 	box1.setSize(Vector2f(400, 50));

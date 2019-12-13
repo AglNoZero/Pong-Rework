@@ -18,25 +18,10 @@
     <ClInclude Include="Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cBall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cBeginMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cItem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Control.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cPaddle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cPlayerName.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cPlayWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header.h">
@@ -45,36 +30,27 @@
     <ClInclude Include="TextBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cGameData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cBall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="cBeginMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cItem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Control.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cPaddle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="cPlayerName.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cPlayWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
