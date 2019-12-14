@@ -24,8 +24,6 @@ using namespace std;
 #include <Windows.h>
 #include <vector>
 
-#include "cGameData.h"
-
 #include "Ball.h"
 #include "Bonus.h"
 #include "Brick.h"
@@ -33,6 +31,6 @@ using namespace std;
 #include "pre.h"
 #include "Wall.h"
 
-#include "cEndGame.h"
+#include "cHallOfFame.h"
 
 #endif

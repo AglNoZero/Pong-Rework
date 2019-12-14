@@ -63,6 +63,9 @@
     <ClInclude Include="cGameData.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
+    <ClInclude Include="cHallOfFame.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

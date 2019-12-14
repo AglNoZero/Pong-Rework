@@ -26,6 +26,7 @@
     <ClInclude Include="cBeginMenu.h" />
     <ClInclude Include="cEndGame.h" />
     <ClInclude Include="cGameData.h" />
+    <ClInclude Include="cHallOfFame.h" />
     <ClInclude Include="cPlayerName.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="Paddle.h" />
