@@ -9,13 +9,14 @@ using namespace sf;
 #define WIDTH 900
 #define HEIGHT 600
 
+void play();
 // This is where our game starts from
 int main()
 {
 
 	//Thêm background
 	Texture background;
-	background.loadFromFile("2635205 - resize 900x600.jpg");
+	background.loadFromFile("Backgrounds/2635205 - resize 900x600.jpg");
 	Sprite Background(background);
 
 	//Kết thúc code mới
@@ -56,7 +57,12 @@ int main()
 						switch (begin.getChoose()) {
 							//New game
 							case 0:{
+								int score = 600;
 
+								//Chơi xong thì hiện cửa sổ nhập tên và in điểm
+								cPlayerName endGame;
+								string namePlayer;
+								endGame.fillNameOnePlayer(namePlayer, score, window);
 							}
 							//Load game
 							case 1: {
@@ -85,5 +91,65 @@ int main()
 				window.display();
 			}
 		}
+	}
+}
+
+void play() {
+	RenderWindow window(VideoMode(WIDTH_DISPLAY, HEIGHT_DISPLAY), "SFML");
+	Font font;
+	font.loadFromFile("Fonts/BebasNeue-Regular.ttf");
+	Text text;
+	text.setFont(font);
+	text.setPosition(Vector2f(200, 500));
+	text.setFillColor(Color::Color(255, 0, 102, 200));
+	text.setCharacterSize(100);
+
+	CPaddle *paddle = new CPaddle();
+	CBall *ball = new CBall();
+	CWall *wall = new CWall();
+
+	while (window.isOpen()) {
+		Event e;
+		while (window.pollEvent(e)) {
+			if (e.type == Event::Closed) {
+				window.close();
+			}
+		}
+
+		// điều khiển bóng, paddle, các va chạm cơ bản 
+		ball->control(*paddle);
+		ball->logic(*paddle, *wall, window);
+		paddle->ifCollisionBonus(*wall);
+
+		// xử lý thắng thua 
+		if (wall->getWall().size() == 0 || paddle->getLife() == 0) {
+			window.clear();
+
+			RenderWindow win(VideoMode(WIDTH_DISPLAY, HEIGHT_DISPLAY), "SFML");
+			while (win.isOpen()) {
+				while (win.pollEvent(e)) {
+					if (e.type == Event::Closed) {
+						win.close();
+					}
+				}
+
+				if (wall->getWall().size() == 0) {
+					text.setString("You Won :>");
+				}
+				else {
+					text.setString("You loser :)");
+				}
+
+				win.clear();
+				win.draw(text);
+				win.display();
+			}
+		}
+
+		window.clear();
+		wall->drawWall(window);
+		ball->drawBall(ball->getBall().getPosition(), window);
+		paddle->draw(window);
+		window.display();
 	}
 }

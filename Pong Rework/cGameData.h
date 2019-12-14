@@ -5,8 +5,8 @@ using namespace std;
 class cGameData
 {
 private:
-	string bestPlayer[5];
-	string bestScore[5];
+	vector<string> bestPlayer;
+	vector<string> bestScore;
 public:
 	cGameData();
 	~cGameData();

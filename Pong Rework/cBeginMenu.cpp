@@ -3,11 +3,12 @@
 //cai dat cac thuoc tinh cua cac doi tuong trong menu
 cBeginMenu::cBeginMenu()
 {
-	font_title.loadFromFile("simson.ttf");
+	font_title.loadFromFile("Fonts/simson.ttf");
 	title.setCharacterSize(CharTitleSize); 
 	
 	title.setFillColor(Color(234, 201, 37));
-	title.setString("Pong");
+	//title.setFillColor(Color(255, 111, 40, 100));
+	title.setString("BRICK BREAKER");
 
 	title.setFont(font_title);
 	title.setOutlineThickness(1);
@@ -15,7 +16,7 @@ cBeginMenu::cBeginMenu()
 
 	title.setPosition((WIDTH - title.getGlobalBounds().width) / 2, 80);
 
-	font.loadFromFile("BebasNeue-Regular.ttf");
+	font.loadFromFile("Fonts/BebasNeue-Regular.ttf");
 
 	text[0].setFont(font);
 	text[0].setCharacterSize(CharButtonSize);

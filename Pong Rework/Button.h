@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <SFML/Graphics.hpp>
 using namespace sf;
 #include <iostream>
@@ -12,6 +12,8 @@ private:
 	int buttonWidth; //do rong cua button
 	int buttonHeight; //do cao cua button
 public:
+
+	FloatRect getGlobalBounds(); //Lấy kích cỡ nút
 	void setButton(string buttonText, Vector2f buttonSize, int charSize, Color buttonColor, Color textColor); //cai dat cac thuoc tinh ban dau cho button
 	void setFont(Font& font); //cai dat font chu cho ten button, input: font chu can cai dat, output: ten button da duoc cai dat font
 	void setBackColor(Color color); //cai dat mau cho button, input: mau sac can cai dat, output: button da duoc cai dat mau

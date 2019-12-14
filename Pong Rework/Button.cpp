@@ -1,5 +1,10 @@
 #include "Button.h"
 
+FloatRect Button::getGlobalBounds()
+{
+	return button.getGlobalBounds();
+}
+
 void Button::setButton(string buttonText, Vector2f buttonSize, int charSize, Color buttonColor, Color textColor)
 {
 	button.setSize(buttonSize);
@@ -32,8 +37,8 @@ void Button::setPosition(Vector2f point)
 {
 	button.setPosition(point);
 	//lam cho ten button nam o chinh giua button
-	float xPos = (point.x + buttonWidth / 2) - (text.getLocalBounds().width / 2);
-	float yPos = (point.y + buttonHeight / 2.2) - (text.getLocalBounds().height / 2);
+	float xPos = (point.x + button.getGlobalBounds().width / 2) - (text.getLocalBounds().width / 2);
+	float yPos = (point.y + button.getGlobalBounds().height / 2) - (text.getLocalBounds().height / 2);
 	text.setPosition(xPos, yPos);
 }
 
