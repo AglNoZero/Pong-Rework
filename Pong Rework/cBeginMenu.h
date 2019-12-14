@@ -32,4 +32,5 @@ public:
 
 	int getChoose();//cho biet doi tuong nao dang duoc chon, ouput: tra ve thu tu cua doi tuong duoc chon trong menu
 
+
 };

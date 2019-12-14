@@ -149,7 +149,7 @@ void cPlayerName::setTheButtonPlay()
 //}
 
 
-void cPlayerName::fillNameOnePlayer(string& namePlayer, int score, RenderWindow& window)
+void cPlayerName::display(string& namePlayer, int score, RenderWindow& window)
 {
 	window.clear();
 	if (score <= 500) { texture.loadFromFile("Backgrounds/End game.jpg"); }

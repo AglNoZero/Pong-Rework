@@ -33,6 +33,6 @@ using namespace std;
 #include "pre.h"
 #include "Wall.h"
 
-#include "cEndGame.h"
+#include "cHallOfFame.h"
 
 #endif

@@ -54,14 +54,14 @@
     <ClInclude Include="Header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cEndGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DynamicText.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="cGameData.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cHallOfFame.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +74,6 @@
     <ClCompile Include="cBeginMenu.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="cEndGame.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
     <ClCompile Include="cPlayerName.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -85,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="cGameData.cpp">
       <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cHallOfFame.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -64,3 +64,22 @@ bool Button::isMouseOver(RenderWindow& window)
 	}
 	return false;
 }
+
+bool Button::isMouseOverText(RenderWindow& window)
+{
+
+	int mouseX = Mouse::getPosition(window).x;
+	int mouseY = Mouse::getPosition(window).y;
+	int textPosX = text.getPosition().x;
+	int textPosY = text.getPosition().y;
+
+	/*int textxposwidth = text.getposition().x + textwidth;
+	int textyposheight = text.getposition().y + textheight;
+
+	if (mousex < buttonxposwidth && mousex > buttonposx && mousey < buttonyposheight && mousey > buttonposy)
+	{
+		return true;
+	}
+	*/
+	return false;
+}

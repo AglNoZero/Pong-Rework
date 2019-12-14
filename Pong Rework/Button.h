@@ -21,6 +21,7 @@ public:
 	void setPosition(Vector2f point); //cai dat vi tri button, input: vi tri can cai dat cho button, output: button da duoc cai dat vi tri
 	void draw(RenderWindow& window); //ve button len man hinh, input: man hinh ma ta muon ve button len do, output: button da duoc ve len cua so window truyen vao
 	bool isMouseOver(RenderWindow& window); 
+	bool isMouseOverText(RenderWindow& window);
 	//kiem tra xem con tro chuot co dang trong pham vi button
     //input: man hinh ma ta da ve button len do, output: return true neu con tro chuot dang o trong button, nguoc lai return false
 };

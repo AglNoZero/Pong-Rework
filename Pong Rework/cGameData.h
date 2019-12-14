@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Header.h"
-using namespace std;
+
 class cGameData
 {
 private:
@@ -14,5 +14,7 @@ public:
 	void writeBestScoreToFile();
 
 	void loadBestScoreFromFile();
+
+	void sortByScore();
 };
 
