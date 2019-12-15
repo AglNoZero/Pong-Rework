@@ -89,5 +89,8 @@
     <ClCompile Include="cGameData.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="cHallOfFame.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

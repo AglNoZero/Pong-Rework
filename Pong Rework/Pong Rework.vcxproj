@@ -39,6 +39,7 @@
     <ClCompile Include="cBeginMenu.cpp" />
     <ClCompile Include="cEndGame.cpp" />
     <ClCompile Include="cGameData.cpp" />
+    <ClCompile Include="cHallOfFame.cpp" />
     <ClCompile Include="cPlayerName.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="DynamicText.cpp" />
