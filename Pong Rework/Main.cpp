@@ -68,6 +68,17 @@ int main()
 							}
 							//Load game
 							case 1: {
+								vector<string> playerName = { "Long","Phuong", "Toan", "Minh", "Luan" };
+								vector<int> playerScore = { 900,800,700,600,500 };
+								CFile::writeHallOfFame(playerName, playerScore);
+								
+								playerName.clear(); playerScore.clear();
+							
+								CFile::readHallOfFame(playerName, playerScore);
+								for (int i = 0; i < playerName.size(); i++) {
+									cout << playerName[i] << "\t" << playerScore[i] << endl;
+								}
+								
 
 								break;
 							}

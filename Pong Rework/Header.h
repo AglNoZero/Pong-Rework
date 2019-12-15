@@ -9,6 +9,7 @@ using namespace sf;
 using namespace std;
 
 #include <fstream>
+#include <istream>
 #include <string>
 #include <conio.h>
 #include <math.h>
