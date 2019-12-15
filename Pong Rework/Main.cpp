@@ -63,6 +63,8 @@ int main()
 								cPlayerName endGame;
 								string namePlayer;
 								endGame.fillNameOnePlayer(namePlayer, score, window);
+
+								break;
 							}
 							//Load game
 							case 1: {
@@ -70,12 +72,16 @@ int main()
 							}
 							//Hall of fame
 							case 2: {
-							
+								vector<string> playerName = { "Long","Phuong", "Toan", "Minh", "Luan" };
+								vector<int> playerScore = { 900,800,700,600,500 };
+								cHallOfFame hallOfFame(playerName, playerScore);
+								hallOfFame.display(window);
 
+								break;
 							}
 							//Exit
 							case 3: {
-
+								break;
 							}
 						}
 					}
