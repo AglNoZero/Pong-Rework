@@ -25,13 +25,18 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="cBeginMenu.h" />
     <ClInclude Include="cEndGame.h" />
+    <ClInclude Include="Control.h" />
+    <ClInclude Include="cPaddle.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="cHallOfFame.h" />
     <ClInclude Include="cPlayerName.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="ListRocket.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="pre.h" />
     <ClInclude Include="DynamicText.h" />
+    <ClInclude Include="Rocket.h" />
+    <ClInclude Include="TextBox.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>

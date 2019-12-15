@@ -9,7 +9,7 @@ using namespace sf;
 #define WIDTH 900
 #define HEIGHT 600
 
-void play();
+void play(int& score, RenderWindow& window);
 // This is where our game starts from
 int main()
 {
@@ -29,6 +29,9 @@ int main()
 	Text a;
 
 	Event event;
+
+	vector<string> playerName;
+	vector<int> playerScore;
 
 	if (window.isOpen())
 	{
@@ -59,33 +62,24 @@ int main()
 							case 0:{
 								int score = 600;
 
-								//Chơi xong thì hiện cửa sổ nhập tên và in điểm
+								play(score, window);
 								cPlayerName endGame;
 								string namePlayer;
 								endGame.display(namePlayer, score, window);
-
+								playerName.push_back(namePlayer);
+								playerScore.push_back(score);
+								CFile::writeHallOfFame(playerName, playerScore);
 								break;
 							}
 							//Load game
 							case 1: {
-								vector<string> playerName = { "Long","Phuong", "Toan", "Minh", "Luan" };
-								vector<int> playerScore = { 900,800,700,600,500 };
-								CFile::writeHallOfFame(playerName, playerScore);
-								
-								playerName.clear(); playerScore.clear();
-							
-								CFile::readHallOfFame(playerName, playerScore);
-								for (int i = 0; i < playerName.size(); i++) {
-									cout << playerName[i] << "\t" << playerScore[i] << endl;
-								}
-								
 
 								break;
 							}
 							//Hall of fame
 							case 2: {
-								vector<string> playerName = { "Long","Phuong", "Toan", "Minh", "Luan" };
-								vector<int> playerScore = { 900,800,700,600,500 };
+
+								CFile::readHallOfFame(playerName, playerScore);
 								cHallOfFame hallOfFame(playerName, playerScore);
 								hallOfFame.display(window);
 
@@ -113,19 +107,15 @@ int main()
 	}
 }
 
-void play() {
-	RenderWindow window(VideoMode(WIDTH_DISPLAY, HEIGHT_DISPLAY), "SFML");
-	Font font;
-	font.loadFromFile("Fonts/BebasNeue-Regular.ttf");
-	Text text;
-	text.setFont(font);
-	text.setPosition(Vector2f(200, 500));
-	text.setFillColor(Color::Color(255, 0, 102, 200));
-	text.setCharacterSize(100);
+void play(int& score, RenderWindow& window) {
+	Clock clock;
+	const float FPS = 120.0f;    //The desired FPS. (The number of updates each second).
+	bool redraw = true;           //Do I redraw everything on the screen?
 
 	CPaddle *paddle = new CPaddle();
 	CBall *ball = new CBall();
 	CWall *wall = new CWall();
+	CControl *Control = new CControl();
 
 	while (window.isOpen()) {
 		Event e;
@@ -135,40 +125,45 @@ void play() {
 			}
 		}
 
-		// điều khiển bóng, paddle, các va chạm cơ bản 
-		ball->control(*paddle);
-		ball->logic(*paddle, *wall, window);
-		paddle->ifCollisionBonus(*wall);
+		//Wait until 1/120th of a second has passed, then update everything.
+		if (clock.getElapsedTime().asSeconds() >= 1.0f / (FPS)) {
+			redraw = true; //We're ready to redraw everything
 
-		// xử lý thắng thua 
-		if (wall->getWall().size() == 0 || paddle->getLife() == 0) {
-			window.clear();
+			// điều khiển bóng, paddle, các va chạm cơ bản 
+			Control->control(*paddle, *ball, *wall);
+			ball->logic(*paddle, *wall);
+			paddle->ifCollisionBonus(*wall);
 
-			RenderWindow win(VideoMode(WIDTH_DISPLAY, HEIGHT_DISPLAY), "SFML");
-			while (win.isOpen()) {
-				while (win.pollEvent(e)) {
-					if (e.type == Event::Closed) {
-						win.close();
-					}
-				}
+			// xử lý thắng thua 
+			if (wall->getWall().size() == 0 || paddle->getLife() == 0) {
+			// if (false) {
+				window.clear(Color::Black);
+				wall->drawWall(window);
+				ball->drawBall(ball->getBall().getPosition(), window);
+				paddle->draw(window, *wall);
+				window.display();
 
-				if (wall->getWall().size() == 0) {
-					text.setString("You Won :>");
-				}
-				else {
-					text.setString("You loser :)");
-				}
+				Time t = seconds(1.0);
+				sleep(t);
 
-				win.clear();
-				win.draw(text);
-				win.display();
+				score = paddle->getScore();
+				return;
 			}
+			clock.restart();
+		}
+		// Sleep until next 1/120th of a second comes around 
+		else {
+			Time sleepTime = seconds((1.0f / FPS) - clock.getElapsedTime().asSeconds());
+			sleep(sleepTime);
 		}
 
-		window.clear();
-		wall->drawWall(window);
-		ball->drawBall(ball->getBall().getPosition(), window);
-		paddle->draw(window);
-		window.display();
+		if (redraw) {
+			window.clear(Color::Black);
+			wall->drawWall(window);
+			ball->drawBall(ball->getBall().getPosition(), window);
+			paddle->draw(window, *wall);
+			window.display();
+			redraw = false;
+		}
 	}
 }

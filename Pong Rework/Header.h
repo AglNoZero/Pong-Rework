@@ -31,6 +31,9 @@ using namespace std;
 #include "pre.h"
 #include "Wall.h"
 
+#include "Control.h"
+#include "Rocket.h"
+#include "ListRocket.h"
 
 
 #endif

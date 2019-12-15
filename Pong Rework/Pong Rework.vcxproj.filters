@@ -66,6 +66,21 @@
     <ClInclude Include="File.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
+    <ClInclude Include="Control.h">
+      <Filter>Header Files\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="cPaddle.h">
+      <Filter>Header Files\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ListRocket.h">
+      <Filter>Header Files\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Rocket.h">
+      <Filter>Header Files\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

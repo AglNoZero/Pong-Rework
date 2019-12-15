@@ -29,5 +29,12 @@ void CFile::writeHallOfFame(vector<string> playerName, vector<int> playerScore)
 		}
 	}
 
+	for (int i = 0; i < 5; i++) {
+		file << "-" << endl << "0";
+		if (i < 4) {
+			file << endl;
+		}
+	}
+
 	file.close();
 }

@@ -2,37 +2,51 @@
 #define BONUS_H_
 
 #include "pre.h"
-#include "Ball.h"
 
 class CBonus {
     private:
         RectangleShape bonus;
+        int type;
 
     public:
+        int getType() {
+            return type;
+        }
         RectangleShape getBonus() {
             return bonus;
+        }
+        void setPos(Vector2f a) {
+            bonus.setPosition(a);
         }
 
         CBonus(Vector2f pos) {
             Texture *image = new Texture;
 
             bonus.setSize(SIZE_BONUS);
-            int i = rand() % 4;
+            int i = rand() % 5;
             if (i == 0) {
                 // tăng kích thước bóng
                 image->loadFromFile("./Items/diamond.png");
+                type = TYPE4;
             }
             else if (i == 1) {
-                // xổ ra 1 đống bóng
+                // thu nhỏ paddle
                 image->loadFromFile("./Items/bomb.png");
+                type = TYPE3;
             }
             else if (i == 2) {
-                // bắn 
+                // đóng băng paddle cho đến khi mất 1 mạng 
                 image->loadFromFile("./Items/frezee.png");
+                type = TYPE2;
             }
             else if (i == 3) {
-                // bắn ra tia sét :)
+                // tăng tốc độ bóng lên gấp đôi 
+                image->loadFromFile("./Items/speed up.png");
+                type = TYPE1;
+            }
+            else if (i == 4) {
                 image->loadFromFile("./Items/dollar.png");
+                type = TYPE0;
             }
             bonus.setOrigin(X_Y_ORIGIN_BONUS);
             bonus.setTexture(image);
@@ -40,31 +54,12 @@ class CBonus {
         }
 
         void move() {
-            bonus.move(0, 0.4f);
+            bonus.move(SPEED_BONUS);
         }
 
         void draw(RenderWindow &window) {
             window.draw(bonus);
         }
-
-        /*
-            * mỗi bonus trong vector bonus chỉ được dùng duy nhất 1 lần,,,
-            * sau đó phải xóa ngay đi :> 
-            * chính xác là xóa đi ngay sau khi  
-            * nếu không xóa sẽ làm kích thước bóng x2 nhiều lần, 
-            * số bóng cũng sẽ tăng gấp nhiều lần :> 
-        */
-        // void executeBonus(int type, CBall &ball) {
-        //     switch (type) {
-        //         case 1: {
-        //             // ball.getBall().setSize(Vector2f(SIZE_BALL.x * 2, SIZE_BALL.y * 2));
-        //         } break;
-
-        //         // case 2: {
-                    
-        //         // } break;
-        //     }
-        // }
 };
 
 #endif // !BONUS_H_

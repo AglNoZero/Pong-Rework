@@ -14,16 +14,16 @@ class CListRocket {
 
         void setupRocket(CWall wall) {
             vector<CBrick> vectorBrick = wall.getWall();
-            CBrick *tempB; 
-            for (int i = 0; i < wall.getWall().size(); i++) {
-                tempB = new CBrick();
-                *tempB = wall.getWall()[i];
-                vectorBrick.push_back(*tempB);
-            }
+            //CBrick *tempB; 
+            //for (int i = 0; i < wall.getWall().size(); i++) {
+            //    tempB = new CBrick();
+            //    *tempB = wall.getWall()[i];
+            //    vectorBrick.push_back(*tempB);
+            //}
             CRocket *temp;
             for (int i = 0; i < 10; i++) {
                 temp = new CRocket();
-                temp->setPos(Vector2f(30 + 100 * i, BEGINNING_POS_PADDLE.y + 50 * pow(-1, i)));
+                temp->setPos(Vector2f(30 + 100 * i, BEGINNING_POS_PADDLE.y + 20 * pow(-1, i)));
                 vectorRocket.push_back(*temp);
             }
         }

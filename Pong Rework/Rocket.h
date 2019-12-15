@@ -17,7 +17,7 @@ class CRocket {
         }
 
         CRocket() {
-            triangle = CircleShape(20, 3);
+            triangle = CircleShape(10, 3);
             triangle.setFillColor(Color::Yellow);
             speed = SPEED_ROCKET;
         }
