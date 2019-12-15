@@ -25,27 +25,32 @@ class CBonus {
             bonus.setSize(SIZE_BONUS);
             int i = rand() % 5;
             if (i == 0) {
-                // tăng kích thước bóng
-                image->loadFromFile("./Items/diamond.png");
+                // Tên lửa
+                image->loadFromFile("./Items/rocket.png");
+				image->setSmooth(true);
                 type = TYPE4;
             }
             else if (i == 1) {
-                // thu nhỏ paddle
-                image->loadFromFile("./Items/bomb.png");
+                // Tăng tốc bóng
+                image->loadFromFile("./Items/speed up.png");
+				image->setSmooth(true);
                 type = TYPE3;
             }
             else if (i == 2) {
                 // đóng băng paddle cho đến khi mất 1 mạng 
                 image->loadFromFile("./Items/frezee.png");
+				image->setSmooth(true);
                 type = TYPE2;
             }
             else if (i == 3) {
-                // tăng tốc độ bóng lên gấp đôi 
-                image->loadFromFile("./Items/speed up.png");
+                // Làm nhỏ paddle
+                image->loadFromFile("./Items/minimize.png");
+				image->setSmooth(true);
                 type = TYPE1;
             }
-            else if (i == 4) {
-                image->loadFromFile("./Items/dollar.png");
+            else if (i == 4) { //Tăng kích thước bóng gấp đôi
+                image->loadFromFile("./Items/expand ball.png");
+				image->setSmooth(true);
                 type = TYPE0;
             }
             bonus.setOrigin(X_Y_ORIGIN_BONUS);

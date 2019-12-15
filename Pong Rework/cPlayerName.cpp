@@ -82,7 +82,7 @@ void cPlayerName::setTheButtonPlay()
 void cPlayerName::display(string& namePlayer, int score, RenderWindow& window)
 {
 	window.clear();
-	if (score <= 500) { texture.loadFromFile("Backgrounds/Bad end.jpg"); }
+	if (score <= 200) { texture.loadFromFile("Backgrounds/Bad end.jpg"); }
 	else {
 		texture.loadFromFile("Backgrounds/Good end.jpg");
 	}

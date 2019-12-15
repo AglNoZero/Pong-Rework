@@ -17,14 +17,14 @@ class CPaddle {
         Text textLife;
         Text textBonus;
         void setupText() {
-            if (!font.loadFromFile("Rainbow Colors - TTF.ttf")) {
-                cout << "Can't load font Rainbow Colors - TTF.ttf\n";
+            if (!font.loadFromFile("Fonts/BebasNeue-Regular.ttf")) {
+                cout << "Can't load font BebasNeue-Regular.ttf\n";
             }
 
             textLife.setFont(font);
             textLife.setString(to_string(score));
            // textLife.setColor(Color::Green);
-            textLife.setCharacterSize(100);
+            textLife.setCharacterSize(30);
             textLife.setPosition(BEGINNING_POS_TEXT);
 
             textBonus.setFont(font);
@@ -77,7 +77,7 @@ class CPaddle {
         CPaddle() {
             paddle.setSize(SIZE_PADDLE);
             paddle.setPosition(BEGINNING_POS_PADDLE);
-            paddle.setFillColor(Color::Cyan);
+			paddle.setFillColor(Color::Color(255, 126, 0, 100));
             setSpeed(SPEED_PADDLE);
             setLife(3);
             setScore(0);

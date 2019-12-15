@@ -10,6 +10,22 @@ using namespace sf;
 #define HEIGHT 600
 
 void play(int& score, RenderWindow& window);
+void sort(vector<string> &tenNguoiChoi, vector<int> &diemNguoiChoi) {
+	for (int i = 0; i < diemNguoiChoi.size() - 1; i++) {
+		for (int j = i + 1; j < diemNguoiChoi.size(); j++) {
+			if (diemNguoiChoi[i] < diemNguoiChoi[j]) {
+				int temp = diemNguoiChoi[i];
+				diemNguoiChoi[i] = diemNguoiChoi[j];
+				diemNguoiChoi[j] = temp;
+
+				string str = tenNguoiChoi[i];
+				tenNguoiChoi[i] = tenNguoiChoi[j];
+				tenNguoiChoi[j] = str;
+			}
+		}
+	}
+}
+
 // This is where our game starts from
 int main()
 {
@@ -32,6 +48,7 @@ int main()
 
 	vector<string> playerName;
 	vector<int> playerScore;
+	CFile::readHallOfFame(playerName, playerScore);
 
 	if (window.isOpen())
 	{
@@ -60,8 +77,7 @@ int main()
 						switch (begin.getChoose()) {
 							//New game
 							case 0:{
-								int score = 600;
-
+								int score = 0;
 								play(score, window);
 								cPlayerName endGame;
 								string namePlayer;
@@ -81,6 +97,9 @@ int main()
 
 								CFile::readHallOfFame(playerName, playerScore);
 								cHallOfFame hallOfFame(playerName, playerScore);
+								//Gọi hàm sort
+								sort(playerName, playerScore);
+								//hết sort
 								hallOfFame.display(window);
 
 								break;
@@ -108,6 +127,12 @@ int main()
 }
 
 void play(int& score, RenderWindow& window) {
+
+	Texture background;
+	background.loadFromFile("Backgrounds/Hall of fame.jpg");
+	Sprite Background;
+	Background.setTexture(background);
+
 	Clock clock;
 	const float FPS = 120.0f;    //The desired FPS. (The number of updates each second).
 	bool redraw = true;           //Do I redraw everything on the screen?
@@ -137,7 +162,8 @@ void play(int& score, RenderWindow& window) {
 			// xử lý thắng thua 
 			if (wall->getWall().size() == 0 || paddle->getLife() == 0) {
 			// if (false) {
-				window.clear(Color::Black);
+				window.clear();
+				window.draw(Background);
 				wall->drawWall(window);
 				ball->drawBall(ball->getBall().getPosition(), window);
 				paddle->draw(window, *wall);
@@ -158,7 +184,8 @@ void play(int& score, RenderWindow& window) {
 		}
 
 		if (redraw) {
-			window.clear(Color::Black);
+			window.clear();
+			window.draw(Background);
 			wall->drawWall(window);
 			ball->drawBall(ball->getBall().getPosition(), window);
 			paddle->draw(window, *wall);

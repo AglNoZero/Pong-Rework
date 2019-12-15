@@ -16,11 +16,11 @@ class CBrick {
         }
 
         CBrick(Vector2f pos) {
+			Texture* texture = new Texture;
+			texture->loadFromFile("Items/brick.jpg");
             brick.setSize(SIZE_BRICK);
             brick.setPosition(pos);
-            brick.setFillColor(Color::Blue);
-            brick.setOutlineThickness(-5);
-            brick.setOutlineColor(Color::Black);
+			brick.setTexture(texture);
         }
         CBrick() {}
 

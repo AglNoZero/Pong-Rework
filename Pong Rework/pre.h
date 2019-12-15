@@ -22,7 +22,7 @@ using namespace sf;
 #define SIZE_PADDLE Vector2f(200, 10)
 #define SPEED_PADDLE 8.0f
 #define BEGINNING_POS_PADDLE Vector2f(WIDTH_DISPLAY/2 - SIZE_PADDLE.x/2, HEIGHT_DISPLAY - SIZE_PADDLE.y - 40)
-#define BEGINNING_POS_TEXT Vector2f(300, 450)
+#define BEGINNING_POS_TEXT Vector2f(820, 560)
 
 #define SIZE_BRICK Vector2f(90, 45)
 
