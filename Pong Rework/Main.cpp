@@ -1,174 +1,95 @@
-﻿#include <sstream>
-#include <cstdlib>
-#include <iostream>
-using namespace std;
-#include <SFML/Graphics.hpp>
-using namespace sf;
-#include "Header.h"
+#include "pre.h"
+#include "Ball.h"
+#include "Bonus.h"
+#include "Control.h"
 
-#define WIDTH 900
-#define HEIGHT 600
+int main(int argc, char const *argv[]) {
+    RenderWindow window(VideoMode(WIDTH_DISPLAY, HEIGHT_DISPLAY), "SFML");
 
-void play();
-// This is where our game starts from
-int main()
-{
+    Clock clock;
+    const float FPS = 120.0f;    //The desired FPS. (The number of updates each second).
+    bool redraw = true;           //Do I redraw everything on the screen?
 
-	//Thêm background
-	Texture background;
-	background.loadFromFile("Backgrounds/2635205 - resize 900x600.jpg");
-	Sprite Background(background);
+    CPaddle *paddle = new CPaddle();
+    CBall *ball = new CBall();
+    CWall *wall = new CWall();
+    CControl *Control = new CControl();
 
-	//Kết thúc code mới
+    while (window.isOpen()) {
+        Event e;
+        while (window.pollEvent(e)) {
+            if (e.type == Event::Closed) {
+                window.close();
+            }
+        }
 
-	//Code cũ
-	RenderWindow window(VideoMode(WIDTH, HEIGHT), "Ping Pong Game"); //dau tien chuong trinh hien thi menu mo dau game
+        //Wait until 1/120th of a second has passed, then update everything.
+        if (clock.getElapsedTime().asSeconds() >= 1.0f / (FPS)) {
+            redraw = true; //We're ready to redraw everything
 
-	cBeginMenu begin;
+            // điều khiển bóng, paddle, các va chạm cơ bản 
+            Control->control(*paddle, *ball, *wall);
+            ball->logic(*paddle, *wall);
+            paddle->ifCollisionBonus(*wall);
 
-	Text a;
+            // xử lý thắng thua 
+            // if (wall->getWall().size() == 0 || paddle->getLife() == 0) {
+            if (false) {
+                window.clear(Color::Black);
+                wall->drawWall(window);
+                ball->drawBall(ball->getBall().getPosition(), window);
+                paddle->draw(window, *wall);
+                window.display();
 
-	Event event;
+                Time t = seconds(1.0);
+                sleep(t);
+                window.close();
 
-	if (window.isOpen())
-	{
-		while (window.isOpen())
-		{
-			while (window.pollEvent(event))
-			{
-				if (event.type == Event::Closed) //neu co ai do nhan dau tat tren man hinh thi chuong trinh ket thuc
-				{
-					window.close();
-				}
-				//di chuyen giua cac lua chon trong menu mo dau game
-				else if (event.type == Event::KeyReleased)
-				{
-					if (event.key.code == Keyboard::Up)
-					{
-						begin.moveUp();
-					}
-					else if (event.key.code == Keyboard::Down)
-					{
-						begin.moveDown();
-					}
-					//khi nguoi choi da chon 1 trong cac lua chon cua menu
-					else if (event.key.code == Keyboard::Return)
-					{
-						switch (begin.getChoose()) {
-							//New game
-							case 0:{
-								int score = 600;
+                RenderWindow win(VideoMode(WIDTH_DISPLAY, HEIGHT_DISPLAY), "SFML");
+                while (win.isOpen()) {
+                    while (win.pollEvent(e)) {
+                        if (e.type == Event::Closed) {
+                            win.close();
+                        }
+                    }
 
-								//Chơi xong thì hiện cửa sổ nhập tên và in điểm
-								cPlayerName endGame;
-								string namePlayer;
-								endGame.display(namePlayer, score, window);
+                    Font font;
+                    font.loadFromFile("Rainbow Colors - TTF.ttf");
+                    Text text;
+                    text.setFont(font);
+                    text.setPosition(Vector2f(200, 500));
+                    text.setColor(Color::Green);
+                    text.setCharacterSize(150);
 
-								break;
-							}
-							//Load game
-							case 1: {
-								vector<string> playerName = { "Long","Phuong", "Toan", "Minh", "Luan" };
-								vector<int> playerScore = { 900,800,700,600,500 };
-								CFile::writeHallOfFame(playerName, playerScore);
-								
-								playerName.clear(); playerScore.clear();
-							
-								CFile::readHallOfFame(playerName, playerScore);
-								for (int i = 0; i < playerName.size(); i++) {
-									cout << playerName[i] << "\t" << playerScore[i] << endl;
-								}
-								
+                    if (wall->getWall().size() == 0) {
+                        text.setString("You Won :)");
+                    }
+                    else {
+                        text.setString("You loser :( ");
+                    }
 
-								break;
-							}
-							//Hall of fame
-							case 2: {
-								vector<string> playerName = { "Long","Phuong", "Toan", "Minh", "Luan" };
-								vector<int> playerScore = { 900,800,700,600,500 };
-								cHallOfFame hallOfFame(playerName, playerScore);
-								hallOfFame.display(window);
+                    win.clear();
+                    win.draw(text);
+                    win.display();
+                }
+            }
+            clock.restart();
+        }
+        // Sleep until next 1/120th of a second comes around 
+        else { 
+            Time sleepTime = seconds((1.0f / FPS) - clock.getElapsedTime().asSeconds());
+            sleep(sleepTime);
+        }
 
-								break;
-							}
-							//Exit
-							case 3: {
-								window.close();
-								break;
-							}
-						}
-					}
-				}
-				//neu co ai do nhan escape thi thoat chuong trinh
-				if (Keyboard::isKeyPressed(Keyboard::Escape))
-				{
-					window.close();
-				}
-				window.clear();
-				window.draw(Background);//tested - ok
-				begin.draw(window);
-				window.display();
-			}
-		}
-	}
-}
+        if (redraw) {
+            window.clear(Color::Black);
+            wall->drawWall(window);
+            ball->drawBall(ball->getBall().getPosition(), window);
+            paddle->draw(window, *wall);
+            window.display();
+            redraw = false;
+        }
+    }
 
-void play() {
-	RenderWindow window(VideoMode(WIDTH_DISPLAY, HEIGHT_DISPLAY), "SFML");
-	Font font;
-	font.loadFromFile("Fonts/BebasNeue-Regular.ttf");
-	Text text;
-	text.setFont(font);
-	text.setPosition(Vector2f(200, 500));
-	text.setFillColor(Color::Color(255, 0, 102, 200));
-	text.setCharacterSize(100);
-
-	CPaddle *paddle = new CPaddle();
-	CBall *ball = new CBall();
-	CWall *wall = new CWall();
-
-	while (window.isOpen()) {
-		Event e;
-		while (window.pollEvent(e)) {
-			if (e.type == Event::Closed) {
-				window.close();
-			}
-		}
-
-		// điều khiển bóng, paddle, các va chạm cơ bản 
-		ball->control(*paddle);
-		ball->logic(*paddle, *wall, window);
-		paddle->ifCollisionBonus(*wall);
-
-		// xử lý thắng thua 
-		if (wall->getWall().size() == 0 || paddle->getLife() == 0) {
-			window.clear();
-
-			RenderWindow win(VideoMode(WIDTH_DISPLAY, HEIGHT_DISPLAY), "SFML");
-			while (win.isOpen()) {
-				while (win.pollEvent(e)) {
-					if (e.type == Event::Closed) {
-						win.close();
-					}
-				}
-
-				if (wall->getWall().size() == 0) {
-					text.setString("You Won :>");
-				}
-				else {
-					text.setString("You loser :)");
-				}
-
-				win.clear();
-				win.draw(text);
-				win.display();
-			}
-		}
-
-		window.clear();
-		wall->drawWall(window);
-		ball->drawBall(ball->getBall().getPosition(), window);
-		paddle->draw(window);
-		window.display();
-	}
+    return 0;
 }

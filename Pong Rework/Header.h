@@ -30,7 +30,8 @@ using namespace std;
 #include "Paddle.h"
 #include "pre.h"
 #include "Wall.h"
-
+#include "Rocket.h"
+#include "ListRocket.h"
 
 
 #endif

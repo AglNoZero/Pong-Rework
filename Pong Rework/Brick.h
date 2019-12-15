@@ -22,6 +22,7 @@ class CBrick {
             brick.setOutlineThickness(-5);
             brick.setOutlineColor(Color::Black);
         }
+        CBrick() {}
 
         void draw(RenderWindow &window) {
             window.draw(brick);

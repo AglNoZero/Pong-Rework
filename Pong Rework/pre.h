@@ -1,9 +1,10 @@
 #ifndef PRE_H_
 #define PRE_H_
-
+#define SFML_NO_DEPRECATED_WARNINGS
 #include "iostream"
 using namespace std;
 
+#include "SFML/System.hpp"
 #include "SFML/Graphics.hpp"
 using namespace sf;
 
@@ -11,15 +12,19 @@ using namespace sf;
 
 #include "vector"
 
-#define HEIGHT_DISPLAY 1400/2
-#define WIDTH_DISPLAY 1000/2
+#include "fstream"
 
-#define SIZE_PADDLE Vector2f(200/2, 20/2)
-#define SPEED_PADDLE 6.0f
-#define BEGINNING_POS_PADDLE Vector2f(WIDTH_DISPLAY/2 - SIZE_PADDLE.x/2, HEIGHT_DISPLAY - SIZE_PADDLE.y)
-#define BEGINNING_POS_TEXT Vector2f(500/2 - 133/2, 500/2)
+// #define HEIGHT_DISPLAY 1400
+// #define WIDTH_DISPLAY 1000
+#define HEIGHT_DISPLAY 600
+#define WIDTH_DISPLAY 900
 
-#define SIZE_BRICK Vector2f(100/2, 50/2)
+#define SIZE_PADDLE Vector2f(200, 10)
+#define SPEED_PADDLE 8.0f
+#define BEGINNING_POS_PADDLE Vector2f(WIDTH_DISPLAY/2 - SIZE_PADDLE.x/2, HEIGHT_DISPLAY - SIZE_PADDLE.y - 40)
+#define BEGINNING_POS_TEXT Vector2f(300, 450)
+
+#define SIZE_BRICK Vector2f(90, 45)
 
 /*
         * 3 - Right Up
@@ -43,18 +48,21 @@ using namespace sf;
 #define UP 1
 #define DOWN 2
 
-#define SIZE_BALL Vector2f(20/2, 20/2)
-#define SPEED_BALL_X 6.0f
-#define SPEED_BALL_Y 6.0f
-#define BEGINNING_POS_BALL Vector2f(500/2, 500/2)
+#define SIZE_BALL Vector2f(10, 10)
+#define SPEED_BALL_X 4.0f
+#define SPEED_BALL_Y 4.0f
+#define BEGINNING_POS_BALL Vector2f(450, 300)
 
-#define SIZE_BONUS Vector2f(50/2, 50/2)
-#define X_Y_ORIGIN_BONUS Vector2f(25/2, 25/2)
-/*
-        * tăng kích thước bóng
-        * xổ ra 1 đống bóng (khác màu bóng chính), có thể tung hứng nhưg k bị mất mạng 
-        * bắn
-        * bắn ra tia sét :) để hủy 1 số lượng bóng nhất định
-*/
+#define SIZE_BONUS Vector2f(30, 30)
+#define X_Y_ORIGIN_BONUS Vector2f(10, 10)
+#define SPEED_BONUS Vector2f(0, 4)
+#define TYPE0 0 // tăng kích cỡ bóng cho đến lúc mất 1 mạng 
+#define TYPE1 1 // thu nhỏ paddle cho đến khi chết :) 
+#define TYPE2 2 // đóng băng đến khi mất cmn 1 mạng :) 
+#define TYPE3 3 // tăng tốc độ bóng lên gấp đôi 
+#define TYPE4 4 // xổ ra 1 đống bóng :)
+
+#define SPEED_ROCKET Vector2f(0, -2);
+
 
 #endif // !PRE_H_

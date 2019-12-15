@@ -20,6 +20,12 @@ class CBall {
         }
 
     public:
+        void setPos(Vector2f a) {
+            ball.setPosition(a);
+        }
+        void setSize(Vector2f a) {
+            ball.setSize(a);
+        }
         RectangleShape getBall() {
             return ball;
         }
@@ -48,32 +54,7 @@ class CBall {
             window.draw(ball);
         }
 
-        void control(CPaddle &paddle) {
-            if (Keyboard::isKeyPressed(Keyboard::Key::A)) {
-                paddle.moveLeft();
-            }
-
-            if (Keyboard::isKeyPressed(Keyboard::Key::D)) {
-                paddle.moveRight();
-            }
-
-            if (Keyboard::isKeyPressed(Keyboard::Key::Space)) {
-                if (paddle.getPlayerServe()) {
-                    paddle.setPlsyerServe(false);
-                    dir = UP;
-                }
-
-                // viết cách sử dụng bonus (bấm space chẳng hạn)
-                // sau khi sử dụng thì xóa ngay lập tức 
-                // else {
-                //     if (!paddle.getVectorBonus().empty()) {
-                //         paddle.getVectorBonus()[0].executeBonus(1, *this);
-                //     }
-                // }
-            }
-        }
-
-        void logic(CPaddle &paddle, CWall &wall, RenderWindow &window) {
+        void logic(CPaddle &paddle, CWall &wall) {
             // đập biên trên 
             if (ball.getPosition().y <= 0) {
                 if (dir == LEFT_UP) {
@@ -181,16 +162,19 @@ class CBall {
                         }
                     }
 
-                    wall.delBrick(i, window);
+                    wall.delBrick(i);
                 }
             }
 
             // người chơi bị mất 1 mạng 
             if (ball.getPosition().y >= HEIGHT_DISPLAY - SIZE_BALL.y)  {
+                setSpeed(Vector2f(SPEED_BALL_X, SPEED_BALL_Y));
+                ball.setSize(SIZE_BALL);
+
                 paddle.setLife(paddle.getLife() - 1);
                 paddle.setPlsyerServe(true);
-                setSpeed(Vector2f(SPEED_BALL_X, SPEED_BALL_Y));
                 paddle.setSpeed(SPEED_PADDLE);
+                paddle.setSize(SIZE_PADDLE);
             }
 
             // khi bị mất 1 mạng, bóng mới sẽ đặt trên paddle

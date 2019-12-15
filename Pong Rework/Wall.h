@@ -16,23 +16,23 @@ class CWall {
 
         CWall() {
             CBrick *temp;
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 10; j++) {
                     if (i % 2 == 0) {
-                        temp = new CBrick(Vector2f(j * 100/2, i * 50/2));
+                        temp = new CBrick(Vector2f(j * SIZE_BRICK.x, i * SIZE_BRICK.y));
                     }
                     else {
-                        temp = new CBrick(Vector2f(-50/2 + j * 100/2, i * 50/2));
+                        temp = new CBrick(Vector2f(-SIZE_BRICK.x/2 + j * SIZE_BRICK.x, i * SIZE_BRICK.y));
                     }
-                    //temp->getBrick().setFillColor(Color(28 * i, 28 * j, 50/2));
                     wall.push_back(*temp);
                 }
             }
         }
 
-        void delBrick(int n, RenderWindow &window) {
+        void delBrick(int n) {
             // true để test, sửa thành rand() % 2 == 0 ngay khi end game
-            if (rand() % 2 == 0) {
+            // if (rand() % 2 == 0) {
+            if (true) {
                 CBonus bonus = CBonus(wall[n].getBrick().getPosition());
                 bonusItems.push_back(bonus);
             }
