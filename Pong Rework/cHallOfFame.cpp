@@ -112,13 +112,15 @@ void cHallOfFame::display(RenderWindow & window)
 		Event event;
 		while (window.pollEvent(event))
 		{
+			if (Keyboard::isKeyPressed(Keyboard::Escape))
+			{
+				window.close();
+			}
+			else if (Keyboard::isKeyPressed(Keyboard::BackSpace)) {
+				return;
+			}
 			switch (event.type)
 			{
-
-			case sf::Event::KeyPressed:
-				if (event.key.code == Keyboard::BackSpace) {
-					return;
-				}
 			case Event::Closed:
 				window.close();
 		

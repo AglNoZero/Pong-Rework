@@ -62,13 +62,14 @@ int main()
 								//Chơi xong thì hiện cửa sổ nhập tên và in điểm
 								cPlayerName endGame;
 								string namePlayer;
-								endGame.fillNameOnePlayer(namePlayer, score, window);
+								endGame.display(namePlayer, score, window);
 
 								break;
 							}
 							//Load game
 							case 1: {
 
+								break;
 							}
 							//Hall of fame
 							case 2: {
@@ -81,6 +82,7 @@ int main()
 							}
 							//Exit
 							case 3: {
+								window.close();
 								break;
 							}
 						}

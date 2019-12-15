@@ -79,77 +79,7 @@ void cPlayerName::setTheButtonPlay()
 	button.setPosition({ (WIDTH - button.getGlobalBounds().width) / 2, HEIGHT - button.getGlobalBounds().height - 20}); //Cấm xóa dấu {}, xóa đấm
 }
 
-//void cPlayerName::fillNameTwoPlayer(string& namePlayer1, string& namePlayer2, RenderWindow& window)
-//{
-//	window.clear();
-//	texture.loadFromFile("39607.jpg");
-//	Sprite sprite(texture);
-//	sprite.scale(0.5, 0.5);
-//
-//	setTheTextBoxTwoPlayer();
-//	setTheButtonPlay();
-//
-//	while (window.isOpen())
-//	{
-//		Event event;
-//		while (window.pollEvent(event))
-//		{
-//			switch (event.type)
-//			{
-//			case Event::Closed:
-//				window.close();
-//			case Event::TextEntered:
-//				if (textbox1.getLimit() != 0) //neu gioi han so khi tu khac 0 thi cho phep nhap vao textbox1, nguoc lai chuyen sang nhap textbox2 
-//				{
-//					textbox1.typedOn(event);
-//				}
-//				else
-//				{
-//					textbox2.typedOn(event);
-//				}
-//
-//			case Event::MouseMoved:
-//				if (button.isMouseOver(window))
-//				{
-//					button.setBackColor(Color::Blue); //chuyen mau button khi con tro chuot dang trong pham vi button
-//				}
-//				else
-//				{
-//					button.setBackColor(Color::Green);
-//				}
-//				break;
-//
-//			case Event::MouseButtonPressed:
-//				if (button.isMouseOver(window))
-//				{
-//					return; //neu nguoi choi ckick vao button thi tat man hinh nhap ten de chuyen sang man hinh choi game
-//				}
-//				break;
-//
-//			}
-//		}
-//		window.clear();
-//		window.draw(sprite);
-//
-//		window.draw(text1);
-//		window.draw(text2);
-//
-//		window.draw(box1);
-//		window.draw(box2);
-//
-//		textbox1.draw(window);
-//		textbox2.draw(window);
-//		button.draw(window);
-//		window.display();
-//	}
-//
-//	textbox1.getText();
-//	namePlayer1 = textbox1.getText();
-//	namePlayer2 = textbox2.getText();
-//}
-
-
-void cPlayerName::fillNameOnePlayer(string& namePlayer, int score, RenderWindow& window)
+void cPlayerName::display(string& namePlayer, int score, RenderWindow& window)
 {
 	window.clear();
 	if (score <= 500) { texture.loadFromFile("Backgrounds/End game.jpg"); }
@@ -170,30 +100,42 @@ void cPlayerName::fillNameOnePlayer(string& namePlayer, int score, RenderWindow&
 		{
 			switch (event.type)
 			{
-			case Event::Closed:
-				window.close();
-			case Event::TextEntered:
-				if (dynamicText.getLimit() != 0)
-				{
-					dynamicText.typedOn(event);
+				case Event::Closed:{
+					window.close();
+					break; 
 				}
-			case Event::MouseMoved:
-				if (button.isMouseOver(window))
-				{
-					button.setBackColor(Color::Color(255, 126, 0, 200)); //1 loại màu cam
+				case Event::TextEntered: {
+					if (dynamicText.getLimit() != 0)
+					{
+						dynamicText.typedOn(event);
+					}
+					else {
+						namePlayer = dynamicText.getText();
+					}
+					break; 
 				}
-				else
-				{
-					button.setBackColor(Color::Color(255, 0, 102, 200)); //1 loại màu hồng
+	
+				case Event::MouseMoved: {
+					if (button.isMouseOver(window))
+					{
+						button.setBackColor(Color::Color(255, 126, 0, 200)); //1 loại màu cam
+					}
+					else
+					{
+						button.setBackColor(Color::Color(255, 0, 102, 200)); //1 loại màu hồng
+					}
+					break; 
 				}
-				break;
-			case Event::MouseButtonPressed:
-				if (button.isMouseOver(window))
-				{
-					return;
+				case Event::MouseButtonPressed: {
+					if (button.isMouseOver(window))
+					{
+						namePlayer = dynamicText.getText();
+						return;
+					}
+					break; 
 				}
-				break;
 			}
+			
 		}
 		window.clear();
 		window.draw(sprite);
@@ -209,5 +151,5 @@ void cPlayerName::fillNameOnePlayer(string& namePlayer, int score, RenderWindow&
 		button.draw(window);
 		window.display();
 	}
-	namePlayer = dynamicText.getText();
+	
 }

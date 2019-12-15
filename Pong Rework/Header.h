@@ -12,17 +12,16 @@ using namespace std;
 #include <string>
 #include <conio.h>
 #include <math.h>
+#include <stdlib.h>
+#include <vector>
 
-
-#include "cBeginMenu.h"
-
+#include "File.h"
 #include "DynamicText.h"
 #include "Button.h"
-#include "cPlayerName.h"
 
-#include <stdlib.h>
-#include <Windows.h>
-#include <vector>
+#include "cHallOfFame.h"
+#include "cBeginMenu.h"
+#include "cPlayerName.h"
 
 #include "Ball.h"
 #include "Bonus.h"
@@ -31,6 +30,6 @@ using namespace std;
 #include "pre.h"
 #include "Wall.h"
 
-#include "cHallOfFame.h"
+
 
 #endif

@@ -85,6 +85,7 @@ void DynamicText::typedOn(Event input)
 			if (charTyped == ENTERKEY) //khi nhan enter, limit duoc gan bang 0, tuc la DynamicText khong cho phep nguoi choi nhap ki tu vao nua
 			{
 				limit = 0;
+				return;
 			}
 			else
 			{

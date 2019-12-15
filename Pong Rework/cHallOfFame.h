@@ -22,7 +22,7 @@ private:
 	Text player3Name; //Tên của người chơi 3
 	Text player4Name; //Tên của người chơi 4
 	Text player5Name; //Tên của người chơi 5
-	Font playerNameFont; //Fon cho tên người chơi
+	Font playerNameFont; //Font cho tên người chơi
 
 	Button backButton; //Nút back về menu
 public:

@@ -25,7 +25,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="cBeginMenu.h" />
     <ClInclude Include="cEndGame.h" />
-    <ClInclude Include="cGameData.h" />
+    <ClInclude Include="File.h" />
     <ClInclude Include="cHallOfFame.h" />
     <ClInclude Include="cPlayerName.h" />
     <ClInclude Include="Header.h" />
@@ -38,7 +38,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="cBeginMenu.cpp" />
     <ClCompile Include="cEndGame.cpp" />
-    <ClCompile Include="cGameData.cpp" />
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="cHallOfFame.cpp" />
     <ClCompile Include="cPlayerName.cpp" />
     <ClCompile Include="Main.cpp" />

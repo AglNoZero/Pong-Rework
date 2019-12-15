@@ -60,11 +60,11 @@
     <ClInclude Include="DynamicText.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
-    <ClInclude Include="cGameData.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
     <ClInclude Include="cHallOfFame.h">
       <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,11 +86,11 @@
     <ClCompile Include="DynamicText.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="cGameData.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="cHallOfFame.cpp">
       <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

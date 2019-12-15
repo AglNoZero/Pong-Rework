@@ -26,5 +26,5 @@ public:
 
 	void setTheButtonPlay();// output: cac thuoc tinh cua play button duoc thiet lap
 
-	void fillNameOnePlayer(string& namePlayer, int playerScore, RenderWindow& window);//hien thi cua so man hinh nhap ten, cho nguoi choi nhap ten, ouput: tra ve ten cua nguoi choi
+	void display(string& namePlayer, int playerScore, RenderWindow& window);//hien thi cua so man hinh nhap ten, cho nguoi choi nhap ten, ouput: tra ve ten cua nguoi choi
 };
