@@ -20,7 +20,7 @@ using namespace sf;
 #define WIDTH_DISPLAY 900
 
 #define SIZE_PADDLE Vector2f(200, 10)
-#define SPEED_PADDLE 8.0f
+#define SPEED_PADDLE 4.0f
 #define BEGINNING_POS_PADDLE Vector2f(WIDTH_DISPLAY/2 - SIZE_PADDLE.x/2, HEIGHT_DISPLAY - SIZE_PADDLE.y - 40)
 #define BEGINNING_POS_TEXT Vector2f(820, 560)
 
@@ -49,20 +49,20 @@ using namespace sf;
 #define DOWN 2
 
 #define SIZE_BALL Vector2f(10, 10)
-#define SPEED_BALL_X 4.0f
-#define SPEED_BALL_Y 4.0f
+#define SPEED_BALL_X 2.0f
+#define SPEED_BALL_Y 2.0f
 #define BEGINNING_POS_BALL Vector2f(450, 300)
 
 #define SIZE_BONUS Vector2f(30, 30)
 #define X_Y_ORIGIN_BONUS Vector2f(10, 10)
-#define SPEED_BONUS Vector2f(0, 4)
-#define TYPE0 0 // tăng kích cỡ bóng cho đến lúc mất 1 mạng 
-#define TYPE1 1 // thu nhỏ paddle cho đến khi chết :) 
-#define TYPE2 2 // đóng băng đến khi mất cmn 1 mạng :) 
-#define TYPE3 3 // tăng tốc độ bóng lên gấp đôi 
-#define TYPE4 4 // xổ ra 1 đống bóng :)
+#define SPEED_BONUS Vector2f(0, 2)
+#define TYPE0 0 
+#define TYPE1 1 
+#define TYPE2 2
+#define TYPE3 3 
+#define TYPE4 4
 
-#define SPEED_ROCKET Vector2f(0, -6);
+#define SPEED_ROCKET Vector2f(0, -3);
 
 
 #endif // !PRE_H_

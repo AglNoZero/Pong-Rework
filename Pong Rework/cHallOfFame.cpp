@@ -4,7 +4,7 @@
 
 cHallOfFame::cHallOfFame(vector<string> playerName, vector<int> playerScore)
 {
-	int scorePosX = 100, namePosX = 450;
+	
 	//Thiết đặt tiêu đề Hall of fame
 	titleFont.loadFromFile("Fonts/simson.ttf");
 	title.setString("HALL OF FAME");
@@ -13,7 +13,7 @@ cHallOfFame::cHallOfFame(vector<string> playerName, vector<int> playerScore)
 	title.setColor(Color(234, 201, 37));
 	title.setPosition((WIDTH - title.getGlobalBounds().width) / 2, 20);
 
-
+	int scorePosX = title.getPosition().x, namePosX = 450;
 	playerScoreFont.loadFromFile("Fonts/Leoscar Sans Serif.ttf");
 	playerNameFont.loadFromFile("Fonts/BebasNeue-Regular.ttf");
 	//Thiết đặt tên và điểm người chơi 1
