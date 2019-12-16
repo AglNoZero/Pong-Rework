@@ -49,6 +49,7 @@ int main()
 	vector<string> playerName;
 	vector<int> playerScore;
 	CFile::readHallOfFame(playerName, playerScore);
+	CFile::createFakeData(playerName, playerScore);
 
 	if (window.isOpen())
 	{
@@ -58,6 +59,14 @@ int main()
 			{
 				if (event.type == Event::Closed) //neu co ai do nhan dau tat tren man hinh thi chuong trinh ket thuc
 				{
+					sort(playerName, playerScore);
+					if (playerName.size() > 5) {
+						for (int i = 0; i < 5; i++) {
+							playerName.pop_back();
+							playerScore.pop_back();
+						}
+					}
+					CFile::writeHallOfFame(playerName, playerScore);
 					window.close();
 				}
 				//di chuyen giua cac lua chon trong menu mo dau game
@@ -66,16 +75,18 @@ int main()
 					if (event.key.code == Keyboard::Up)
 					{
 						begin.moveUp();
+						cout << "Up\n";
 					}
 					else if (event.key.code == Keyboard::Down)
 					{
 						begin.moveDown();
+						cout << "Down\n";
 					}
 					//khi nguoi choi da chon 1 trong cac lua chon cua menu
 					else if (event.key.code == Keyboard::Return)
 					{
 						switch (begin.getChoose()) {
-							//New game
+							//Nút bị ẩn, 100% sẽ không chạy vào case này nếu không sửa code trong cBeginMenu, hàm moveUp, moveDown, construtor
 							case 0:{
 								int score = 0;
 								play(score, window);
@@ -84,28 +95,43 @@ int main()
 								endGame.display(namePlayer, score, window);
 								playerName.push_back(namePlayer);
 								playerScore.push_back(score);
-								CFile::writeHallOfFame(playerName, playerScore);
+								
 								break;
 							}
-							//Load game
+							//New game
 							case 1: {
-
+								int score = 0;
+								play(score, window);
+								cPlayerName endGame;
+								string namePlayer;
+								endGame.display(namePlayer, score, window);
+								playerName.push_back(namePlayer);
+								playerScore.push_back(score);
 								break;
 							}
 							//Hall of fame
 							case 2: {
+								/*playerName.clear(); playerScore.clear();
+								CFile::readHallOfFame(playerName, playerScore);*/
 
-								CFile::readHallOfFame(playerName, playerScore);
-								cHallOfFame hallOfFame(playerName, playerScore);
 								//Gọi hàm sort
 								sort(playerName, playerScore);
 								//hết sort
+								cHallOfFame hallOfFame(playerName, playerScore);
 								hallOfFame.display(window);
 
 								break;
 							}
 							//Exit
 							case 3: {
+								sort(playerName, playerScore);
+								if (playerName.size() > 5) {
+									for (int i = 0; i < 5; i++) {
+										playerName.pop_back();
+										playerScore.pop_back();
+									}
+								}
+								CFile::writeHallOfFame(playerName, playerScore);
 								window.close();
 								break;
 							}

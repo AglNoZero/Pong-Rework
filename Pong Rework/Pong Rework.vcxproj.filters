@@ -69,9 +69,6 @@
     <ClInclude Include="Control.h">
       <Filter>Header Files\Game Engine</Filter>
     </ClInclude>
-    <ClInclude Include="cPaddle.h">
-      <Filter>Header Files\Game Engine</Filter>
-    </ClInclude>
     <ClInclude Include="ListRocket.h">
       <Filter>Header Files\Game Engine</Filter>
     </ClInclude>

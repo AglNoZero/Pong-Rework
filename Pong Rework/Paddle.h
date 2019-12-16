@@ -23,14 +23,12 @@ class CPaddle {
 
             textLife.setFont(font);
             textLife.setString(to_string(score));
-           // textLife.setColor(Color::Green);
             textLife.setCharacterSize(30);
             textLife.setPosition(BEGINNING_POS_TEXT);
 
             textBonus.setFont(font);
             textBonus.setString(to_string(score));
-            //textBonus.setColor(Color::Green);
-            textBonus.setCharacterSize(50);
+            textBonus.setCharacterSize(20);
             textBonus.setString("");
         }
         vector<CBonus> vectorBonus;

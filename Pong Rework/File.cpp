@@ -13,7 +13,8 @@ void CFile::readHallOfFame(vector<string>& playerName, vector<int>& playerScore)
 		file >> score;
 		playerScore.push_back(score);
 	}
-
+	playerName.pop_back();
+	playerScore.pop_back();
 	file.close();
 }
 
@@ -23,18 +24,16 @@ void CFile::writeHallOfFame(vector<string> playerName, vector<int> playerScore)
 	file.open("HallOfFame.bin", ios::binary|ios::out);
 
 	for (int i = 0; i < playerName.size(); i++) {
-		file << playerName[i] << endl << playerScore[i];
-		if (i < playerName.size()-1) {
-			file << endl;
-		}
-	}
-
-	for (int i = 0; i < 5; i++) {
-		file << "-" << endl << "0";
-		if (i < 4) {
-			file << endl;
-		}
+		file << playerName[i] << endl << playerScore[i] << endl;
 	}
 
 	file.close();
+}
+
+void CFile::createFakeData(vector<string>& playerName, vector<int>& playerScore)
+{
+	for (int i = 0; i < 5; i++) {
+		playerName.push_back("-");
+		playerScore.push_back(0);
+	}
 }

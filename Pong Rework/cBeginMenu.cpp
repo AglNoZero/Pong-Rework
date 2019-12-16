@@ -18,16 +18,17 @@ cBeginMenu::cBeginMenu()
 
 	font.loadFromFile("Fonts/BebasNeue-Regular.ttf");
 
-	text[0].setFont(font);
+	//Nút bị ẩn
+	/*text[0].setFont(font);
 	text[0].setCharacterSize(CharButtonSize);
 	text[0].setFillColor(Color::Color(255, 0, 102, 200));
 	text[0].setString("NEW GAME");
-	text[0].setPosition((WIDTH - text[0].getGlobalBounds().width) / 2, 310);
+	text[0].setPosition((WIDTH - text[0].getGlobalBounds().width) / 2, 310);*/ 
 
 	text[1].setFont(font);
 	text[1].setCharacterSize(CharButtonSize);
-	text[1].setFillColor(Color::White);
-	text[1].setString("LOAD GAME");
+	text[1].setFillColor(Color::Color(255, 0, 102, 200)); //Đáng lẽ là màu trắng
+	text[1].setString("NEW GAME");
 	text[1].setPosition((WIDTH - text[1].getGlobalBounds().width) / 2, 380);
 
 	text[2].setFont(font);
@@ -43,7 +44,7 @@ cBeginMenu::cBeginMenu()
 	text[3].setPosition((WIDTH - text[3].getGlobalBounds().width) / 2, 520);
 	
 
-	selectItem = 0; //khoi tao doi tuong ban dau duoc chon la doi tuong thu 1
+	selectItem = 1; //Đáng lẽ là 0, nhưng tạm thời ẩn đi 1 nút
 }
 
 //ve menu len man hinh
@@ -60,11 +61,15 @@ void cBeginMenu::draw(RenderWindow& window)
 void cBeginMenu::moveUp()
 {
 	text[selectItem].setColor(Color::White);
-	selectItem--;
-	if (selectItem = -1) {
-		selectItem = OBJECTS - 1;
+	switch (selectItem)
+	{
+	case 0: selectItem = OBJECTS - 1; break;
+	case 1: selectItem = OBJECTS - 1; break; //Đáng lẽ là = 0 nhưng ẩn đi nút đầu
+	case 2: selectItem = 1; break;
+	case 3: selectItem = 2; break;
 	}
 	text[selectItem].setColor(Color::Color(255, 0, 102, 200));
+	cout << "Now selected: " << selectItem << endl;
 }
 
 //thao tac di chuyen xuong duoi trong cac lua chon
@@ -73,10 +78,10 @@ void cBeginMenu::moveDown()
 	text[selectItem].setColor(Color::White);
 	selectItem++;
 	if (selectItem == OBJECTS) {
-		selectItem = 0;
+		selectItem = 1;
 	}
 	text[selectItem].setColor(Color::Color(255, 0, 102, 200));
-	
+	cout << "Now selected: " << selectItem << endl;
 }
 
 //cho biet doi tuong nao dang duoc chon
