@@ -24,7 +24,6 @@
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="cBeginMenu.h" />
-    <ClInclude Include="cEndGame.h" />
     <ClInclude Include="Control.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="cHallOfFame.h" />
@@ -41,7 +40,6 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="cBeginMenu.cpp" />
-    <ClCompile Include="cEndGame.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="cHallOfFame.cpp" />
     <ClCompile Include="cPlayerName.cpp" />

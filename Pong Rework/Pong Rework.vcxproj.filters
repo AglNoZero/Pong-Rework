@@ -54,9 +54,6 @@
     <ClInclude Include="Header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cEndGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DynamicText.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
@@ -87,9 +84,6 @@
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="cBeginMenu.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="cEndGame.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="cPlayerName.cpp">
