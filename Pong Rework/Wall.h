@@ -31,7 +31,7 @@ class CWall {
 
         void delBrick(int n) {
             // true để test, sửa thành rand() % 2 == 0 ngay khi end game
-            if (rand() % 1 == 0) {//25% ra item
+            if (rand() % 3 == 0) {//33.33% ra item
             // if (true) {
                 CBonus bonus = CBonus(wall[n].getBrick().getPosition());
                 bonusItems.push_back(bonus);

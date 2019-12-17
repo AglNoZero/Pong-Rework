@@ -105,14 +105,15 @@ int main()
 								cPlayerName endGame;
 								string namePlayer;
 								endGame.display(namePlayer, score, window);
+								if (namePlayer.empty()) {
+									namePlayer = "-";
+								}
 								playerName.push_back(namePlayer);
 								playerScore.push_back(score);
 								break;
 							}
 							//Hall of fame
 							case 2: {
-								/*playerName.clear(); playerScore.clear();
-								CFile::readHallOfFame(playerName, playerScore);*/
 
 								//Gọi hàm sort
 								sort(playerName, playerScore);
