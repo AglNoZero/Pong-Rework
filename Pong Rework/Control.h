@@ -19,6 +19,12 @@ class CControl {
                     ball.setDir(UP);
                 }
             }
+			if (Keyboard::isKeyPressed(Keyboard::Key::R)) {
+				paddle.setAutoRun(true);
+			}
+			if (Keyboard::isKeyPressed(Keyboard::Key::T)) {
+				paddle.setAutoRun(false);
+			}
 
             if (!paddle.getVectorBonus().empty()) {
                 vector<CBonus> vBonus = paddle.getVectorBonus();
@@ -73,7 +79,7 @@ class CControl {
                 if (Keyboard::isKeyPressed(Keyboard::Key::Num3) && !paddle.getPlayerServe()) {
                     for (int i = 0; i < vBonus.size(); i++) {
                         if (vBonus[i].getType() == TYPE3) {
-                            ball.setSpeed(Vector2f(ball.getSpeed().x * 2, ball.getSpeed().y * 2));
+                            ball.setSpeed(Vector2f(ball.getSpeed().x * 0.5, ball.getSpeed().y * 0.5));
                             vBonus.erase(vBonus.begin() + i);
                             paddle.delBonus(i);
                         }

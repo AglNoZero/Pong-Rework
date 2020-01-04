@@ -17,7 +17,7 @@ class CBrick {
 
         CBrick(Vector2f pos) {
 			Texture* texture = new Texture;
-			texture->loadFromFile("Items/brick.jpg");
+			texture->loadFromFile("Items/brick.png");
             brick.setSize(SIZE_BRICK);
             brick.setPosition(pos);
 			brick.setTexture(texture);

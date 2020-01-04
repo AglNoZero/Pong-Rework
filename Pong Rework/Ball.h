@@ -39,7 +39,9 @@ class CBall {
             dir = a;
         }
         void setSpeed(Vector2f a) {
-            speed = a;
+			if (a.x < 6.0f) {
+				speed = a;
+			}
         }
 
         CBall() {
@@ -110,7 +112,7 @@ class CBall {
                     }
                 }
                 setSpeed(Vector2f(speed.x * 110/100, speed.y * 110/100));
-                paddle.setSpeed(paddle.getSpeed()* 110 / 100);
+                //paddle.setSpeed(paddle.getSpeed()* 110 / 100);
             }
 
             // đập gạch
@@ -219,6 +221,20 @@ class CBall {
                 }
             }
         }
+
+		void autoRun(CPaddle &paddle) {
+			if (paddle.getAutoRun()) {
+				if (paddle.getPlayerServe()) {
+					paddle.setPlsyerServe(false);
+				}
+				if (ball.getPosition().x > paddle.getPaddle().getPosition().x) {
+					paddle.moveRight();
+				}
+				else {
+					paddle.moveLeft();
+				}
+			}
+		}
 };
 
 #endif // !BALL_H_

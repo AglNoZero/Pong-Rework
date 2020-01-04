@@ -31,8 +31,8 @@ class CBonus {
                 type = TYPE4;
             }
             else if (i == 1) {
-                // Tăng tốc bóng
-                image->loadFromFile("./Items/speed up.png");
+                // Giảm tốc bóng
+                image->loadFromFile("./Items/speed down.png");
 				image->setSmooth(true);
                 type = TYPE3;
             }

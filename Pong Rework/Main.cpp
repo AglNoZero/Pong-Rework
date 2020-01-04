@@ -5,6 +5,7 @@ using namespace std;
 #include <SFML/Graphics.hpp>
 using namespace sf;
 #include "Header.h"
+#include <Windows.h>
 
 #define WIDTH 900
 #define HEIGHT 600
@@ -27,7 +28,7 @@ void sort(vector<string> &tenNguoiChoi, vector<int> &diemNguoiChoi) {
 }
 
 // This is where our game starts from
-int main()
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine,int nShowCmd)
 {
 
 	//Thêm background
@@ -182,9 +183,16 @@ void play(int& score, RenderWindow& window) {
 			redraw = true; //We're ready to redraw everything
 
 			// điều khiển bóng, paddle, các va chạm cơ bản 
-			Control->control(*paddle, *ball, *wall);
+			if (paddle->getAutoRun() == false) {
+				Control->control(*paddle, *ball, *wall);
+			}
+			else {
+				ball->autoRun(*paddle);
+				Control->control(*paddle, *ball, *wall);
+			}
 			ball->logic(*paddle, *wall);
 			paddle->ifCollisionBonus(*wall);
+			
 
 			// xử lý thắng thua 
 			if (wall->getWall().size() == 0 || paddle->getLife() == 0) {

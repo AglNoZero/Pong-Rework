@@ -8,6 +8,7 @@
 
 class CPaddle {
     private:
+		bool isAutoRun;
         RectangleShape paddle;
         float speed;
         bool playerServe;
@@ -71,8 +72,15 @@ class CPaddle {
         void setLife(int a) {
             life = a;
         }
+		bool getAutoRun() {
+			return isAutoRun;
+		}
+		void setAutoRun(bool a) {
+			isAutoRun = a;
+		}
 
         CPaddle() {
+			isAutoRun = false;
             paddle.setSize(SIZE_PADDLE);
             paddle.setPosition(BEGINNING_POS_PADDLE);
 			paddle.setFillColor(Color::Color(255, 126, 0, 100));
@@ -103,8 +111,6 @@ class CPaddle {
             }
         }
 
-        
-
         void ifCollisionBonus(CWall &wall) {
             vector<CBonus> bonusArray = wall.getBonusItems();
             for (int i = 0; i < bonusArray.size(); i++) {
@@ -125,11 +131,11 @@ class CPaddle {
                         } break;
 
                         case 3: {
-                            str = "x2 speed ball";
+                            str = "x0.5 speed ball";
                         } break;
 
                         case 4: {
-                            str = "rocket";
+                            str = "Rocket";
                         } break;
                     }
                     textBonus.setPosition(bonusArray[i].getBonus().getPosition().x, bonusArray[i].getBonus().getPosition().y - 50);
